@@ -613,7 +613,7 @@
                 for (let j = 1; j <= 140; j++) {
                     if (tdName <= 10000) {
                         html += '<td class="txt-holder" title="Channel No ' + tdName + '" id="' + tdName + '" onclick="FunName(' + tdName + ')">',
-                            html += '<span class="circle-txt" >10,000</span>',
+                            html += `<span class="circle-txt" >${tdName}</span>`,
                             html += '</td>';
                         tdName++;
                     }
