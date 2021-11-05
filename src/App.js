@@ -16,7 +16,7 @@ const socket = io.connect("http://localhost:4000")
 
 const demos = {
   htmlPage:
-    '<iframe  width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="http://127.0.0.1:5501/my-app/Data.html" ></iframe>',
+    '<iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="http://localhost:3002/Data.html"></iframe>'
 
 };
 function App() {
@@ -145,10 +145,10 @@ function App() {
 
   return (
     <div className="App">
-      <div>
+     
         <Iframe iframe={demos["htmlPage"]} allow="autoplay" id="ifr" />
         {/* <div className="div1"></div> */}
-      </div>
+     
 
       {showModal === true ? <Example className="i am here" showModal={showModal} hideModal={hideModal} ch={ch} GD={GD} /> : <></>}
     </div>
