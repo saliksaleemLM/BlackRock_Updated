@@ -5,10 +5,9 @@ const Graph = ({ GD }) => {
 
     const [data, setData] = useState({})
 
-
     useEffect(() => {
         condition()
-        GD=[];
+        GD = []
 
     }, [GD])
 
@@ -786,20 +785,32 @@ const Graph = ({ GD }) => {
     }
     const lineOptions = {
         scales: {
-            xAxes: [{
-                display: false,
-                gridLines: {
-                    display: false,
+            x: {
+                display: true,
+                max: "10000",
+                min: "200",
+                ticks: {
+                    stepSize: 100
                 },
-            }],
-            yAxes: [{
-                // stacked: true,
-                display: false,
-                gridLines: {
-                    display: false,
-                },
+                grid: {
+                    borderColor: 'red'
+                }
 
-            }],
+            },
+            y: {
+                // stacked: true,
+                display: true,
+                max: "800",
+                min: "-5000",
+                ticks: {
+                    stepSize: 100
+                },
+                grid: {
+                    borderColor: 'red'
+                }
+
+
+            },
         },
         legend: {
             display: false,
@@ -807,24 +818,25 @@ const Graph = ({ GD }) => {
         tooltips: {
             enabled: false,
         },
-      
+
+        zoom: {
+            pan: {
+                enabled: true,
+                mode: 'x',
+            },
             zoom: {
-                pan: {
-                    enabled: true,
-                    mode: 'x',
-                },
-                zoom: {
-                    enabled: true,
-                    drag: true,
-                    mode: 'xy'
-                }
+                enabled: true,
+                drag: true,
+                mode: 'xy'
             }
-        
+        }
+
     };
 
     return (
         <>
             <div className="App-main">
+        {console.log(lineOptions)}
                 <Line data={data} options={lineOptions} />
             </div>
         </>

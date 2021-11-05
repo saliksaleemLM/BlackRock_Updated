@@ -16,14 +16,14 @@ const socket = io.connect("http://localhost:4000")
 
 const demos = {
   htmlPage:
-    '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="http://localhost:3001/Data.html"></iframe>',
+    '<iframe  width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="http://127.0.0.1:5501/my-app/Data.html" ></iframe>',
 
 };
 function App() {
-  const [showModal, setShowModal] = useState(false)
+  const [showModal, setShowModal] = useState(true)
 
 
-  const [ch, setCh] = useState(-1);
+  const [ch, setCh] = useState(2);
 
   const [GD, setGD] = useState([])
   const dataGather = (data1) => {
@@ -48,16 +48,53 @@ function App() {
   useEffect(() => {
 
 
-    window.addEventListener('storage', () => {
-      // When local storage changes, dump the list to
-      // the console.
-      //   console.log(JSON.parse(window.localStorage.getItem('chan')));
-      var data = window.localStorage.getItem('chan');
-      // console.log(data)
+    window.addEventListener("message", handleMessage, false);
 
-      setCh(data)
+    function handleMessage(e) {
+      let { key, value, method } = e.data;
+      if (method == 'store') {
+        window.localStorage.setItem(key, value); // Store data in iframe domain local storage
+      } else if (method == 'retrieve') {
+        let response = window.localStorage.getItem(key);
+        e.source.postMessage({
+          key,
+          response,
+          method: 'response'
+        }, '*'); // Retrieve local storage data
+      }
+    }
+    // -------------------------------------------------------------------- 
+    // --------------Dont delete this below portion ----------------------
+    // --------------------------------------------------------------------
 
+
+
+    // window.addEventListener('storage', (event) => {
+    //   // When local storage changes, dump the list to
+    //   // the console.
+    //   console.log(event.origin)
+    //   //   console.log(JSON.parse(window.localStorage.getItem('chan')));
+    //   var data = window.sessionStorage.getItem('chan');
+    //   // console.log(data)
+
+    //   setCh(data)
+
+    // });
+    // console.log(localStorage.key(0))
+    var PERMITTED_DOMAIN = "http://127.0.0.1:5501/my-app/Data.html";
+    /**
+     * Receiving message from other domain
+     */
+    window.addEventListener('message', function (event) {
+      if (event.origin === PERMITTED_DOMAIN) {
+        if (event.data) {
+          localStorage.setItem("localstorage", event.data);
+        } else {
+          localStorage.removeItem("localstorage");
+        }
+      }
     });
+
 
 
 
@@ -87,7 +124,7 @@ function App() {
 
   const hideModal = () => {
 
-    localStorage.setItem('chan', -1);
+    sessionStorage.setItem('chan', -1);
     setShowModal(false)
 
 
@@ -109,7 +146,7 @@ function App() {
   return (
     <div className="App">
       <div>
-        <Iframe iframe={demos["htmlPage"]} allow="autoplay" />
+        <Iframe iframe={demos["htmlPage"]} allow="autoplay" id="ifr" />
         {/* <div className="div1"></div> */}
       </div>
 
