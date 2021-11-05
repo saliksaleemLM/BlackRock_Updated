@@ -16,7 +16,7 @@ const socket = io.connect("http://localhost:4000")
 
 const demos = {
   htmlPage:
-    '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="http://localhost:3002/Data.html"></iframe>',
+    '<iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay" src="http://localhost:3001/Data.html"></iframe>',
 
 };
 function App() {
@@ -38,6 +38,7 @@ function App() {
     axios.post('http://localhost:3000/getchanneldata', { val: ch }).then((res) => {
 
       console.log(res)
+      console.log("handle CLick called again")
 
     }).catch((err) => {
       console.log(err)
@@ -86,7 +87,7 @@ function App() {
 
   const hideModal = () => {
 
-  localStorage.setItem('chan', -1);
+    localStorage.setItem('chan', -1);
     setShowModal(false)
 
 

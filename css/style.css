@@ -1,0 +1,237 @@
+body{
+	background:#001818;
+	margin:0;
+	padding: 0;
+	color: #fff;
+}
+.header{
+	background:#002e2e;
+	margin-top: 5px;
+}
+.logo{
+	font-size: 18px;
+}
+.logo h4{
+	margin-bottom: 0;
+	padding:4px ​0 6px 10p;
+}
+.logo .fa-chart-line{
+	color: #dd3030;
+}
+.cntrl span{
+vertical-align: text-bottom;
+}
+.cntrl span+span{
+vertical-align: sub;
+}
+.cntrl span+span+span{
+vertical-align: sub;
+}
+.sub-header{
+	background:#001818;
+}
+.cirlce-holder{
+	background: #252525;
+	height: calc(100vh - 100px);
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.legends{
+	margin:0;
+	padding: 0;
+}
+.legends li{
+	list-style-type: none;
+	font-size: 13px;
+	line-height: 21px;
+}
+.legends li .leg_num{
+	min-width: 28px;
+	display: inline-block;
+	text-align: center;
+
+}
+.legends li .clr {
+    background: #fff;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 3px;
+    border:1px solid #fff;
+}
+.clr1{
+	background: #751a1a !important;
+	fill: #751a1a !important;
+}
+.clr2{
+	background:#dd3030  !important;
+	fill:#dd3030  !important;
+}
+.clr3{
+	background:#ff7f00  !important;
+	fill:#ff7f00  !important;
+}
+.clr4{
+	background:#feff00  !important;
+	fill:#feff00  !important;
+}
+.clr5{
+	background:#beff3f  !important;
+	fill:#beff3f  !important;
+}
+.clr6{
+	background:#3ffebe  !important;
+	fill:#3ffebe  !important;
+}
+.clr7{
+	background:#416058  !important;
+	fill:#416058  !important;
+}
+.clr8{
+	background:#00ffff  !important;
+	fill:#00ffff  !important;
+}
+.clr9{
+	background:#00befe !important;
+	fill:#00befe !important;
+}
+.clr10{
+	background:#007ffe  !important;
+	fill:#007ffe  !important;
+}
+.clr11{
+	background:#003ffe  !important;
+	fill:#003ffe  !important;
+}
+.clr12{
+	background:#0000fe  !important;
+	fill:#0000fe  !important;
+}
+.clr13{
+	background:#0000be !important;
+	fill:#0000be !important;
+}
+.clr14{
+	background:#040404  !important;
+	fill:#040404  !important;
+}
+
+/*.cirlce-holder ul{
+	margin:0;
+	padding: 0;
+	line-height: 0;
+}
+.cirlce-holder ul li{
+	display: inline-block;
+	vertical-align: middle;
+	width: 0.8%;
+	height: 10px;
+	background: #426159;
+	border:1px solid #ccc;
+	border-radius: 50%;
+
+}*/
+.circle {
+	
+    /*box-sizing: border-box;
+    margin: 0.1%;
+    width: 0.8%;
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 50%;
+    float: left;
+    height: 15px;*/
+}
+.cir{
+	/*line-height: 0;*/
+	position: relative;
+}
+     #controls
+     {
+     	padding: 10px;
+     }
+     #controls button
+     {
+  		height: 40px;
+  		min-width: 40px;
+  		width: auto;
+  		padding: 10px;
+  		border:none;
+  		font-size: 1em;
+  		background: #3FC380;
+  		border-bottom: 2px solid #16A085;
+  		color: white;
+     }
+     .cursor-pointer{
+     	cursor: pointer;
+     }
+     .color-green{
+     	color: #008a69;
+     }
+     .list-chanel p{
+		font-size: 16px;	
+     }
+     .list-chanel ul{
+		margin:0;
+		padding: 0;
+     }
+     .list-chanel ul li{
+		list-style-type: none;
+     }
+     .cir .my_div{
+     	float: left !important;
+     	/*line-height: 7px;*/
+     }
+
+     .chart_box{
+    position: absolute;
+    width: 260px;
+    height: 230px;
+    background: #002e2e;
+   top: 20px;
+    left:-10px;
+    padding:0 6px;
+    z-index: 1;
+     }
+
+     .chart_box:before {
+    content: "";
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 15px 15px 15px;
+    border-color: transparent transparent #052e2e transparent;
+    top: -15px;
+    left: 0;
+    position: absolute;
+}
+
+/*.chart_box {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 15px 15px 15px;
+    border-color: transparent transparent #052e2e transparent;
+}*/
+
+
+.chart_box .title{
+	color: #009e76;
+    z-index: 1;
+    position: absolute;
+    font-size: 14px;
+    font-weight: bold;
+}
+.curve_chart{
+	width: 250px;
+    height: 200px;
+    position: absolute;
+    top: 25px;
+}
+.graph-box{
+position: relative;
+    display: inline-block;
+    float: left;
+}
