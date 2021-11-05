@@ -1,6 +1,6 @@
 require('dotenv').config();
 const express = require("express");
-var closeFlag=false;
+var closeFlag = false;
 const PORT = process.env.SERVER_PORT; //|| 3000;
 
 const bodyParser = require("body-parser");
@@ -63,11 +63,11 @@ var dgram = require('dgram');
 var client = null;
 var UDP_PORT = process.env.UDP_PORT;
 var UDP_HOST = process.env.UDP_HOST;
-var counter=0;
+var counter = 0;
 app.post("/getchanneldata", (req, res) => {
-  closeFlag=false;
+  closeFlag = false;
   console.log(req.body);
-  
+
   console.log('Hi');
   var message = (req.body.val).toString()
   console.log(message);
@@ -80,52 +80,53 @@ app.post("/getchanneldata", (req, res) => {
 
     console.log(`server listening ${address.address}:${address.port}`);
   });
+
   
-    client.on('message', function (message1, remote) {
-
-      var arr = message1.toString().split(',');
-      console.log("message: "+message1);
-      //console.log(remote.address);
-      console.log(arr);
-      tcpsock.emit("wave", arr);
-      wave.push(arr);
-      if (wave.length === 500) {
-        console.log("Data Removed");
-        wave = [];
-      }
-      if(message1!=="" && closeFlag==false)
-      {
-
-        client.send(message, 0, message.length, UDP_PORT, UDP_HOST, function (err, bytes) {
-        
-          if (err) throw err;
-          counter++
-          console.log(message);
-          console.log('UDP client message sent to ' + UDP_HOST + ':' + UDP_PORT);
-
-          // message="";
-          console.log("counter :"+counter);
-        });
-       
-      }
-      
-    });
-
-    client.send(message, 0, message.length, UDP_PORT, UDP_HOST, function (err, bytes) {
-      if (err) throw err;
-      console.log(message);
-      console.log('UDP client message sent to ' + UDP_HOST + ':' + UDP_PORT);
-      // message="";
-    });
+  client.on('message', function (message1, remote) {
+    // if(closeFlag==false) {
     
+    var arr = message1.toString().split(',');
+    console.log("message: " + message1);
+    //console.log(remote.address);
+    console.log(arr);
+    tcpsock.emit("wave", arr);
+    wave.push(arr);
+    if (wave.length === 500) {
+      console.log("Data Removed");
+      wave = [];
+    }
+    // if (message1 !== "" && closeFlag == false) {
+    // if(closeFlag)    
+      client.send(message, 0, message.length, UDP_PORT, UDP_HOST, function (err, bytes) {
 
-    client.on('disconnect', (msg) => {
-      client.Diconnected()
-      client.log(client.client)
+        if (err) throw err;
+        counter++
+        console.log(message);
+        console.log('UDP client message sent to ' + UDP_HOST + ':' + UDP_PORT);
+
+        // message="";
+        console.log("counter :" + counter);
+      });
+    // }
+    // }
+
+  });
+
+  client.send(message, 0, message.length, UDP_PORT, UDP_HOST, function (err, bytes) {
+    if (err) throw err;
+    console.log(message);
+    console.log('UDP client message sent to ' + UDP_HOST + ':' + UDP_PORT);
+    // message="";
+  });
 
 
-    })
-  }
+  client.on('disconnect', (msg) => {
+    client.Diconnected()
+    client.log(client.client)
+
+
+  })
+}
 );
 
 app.get("/getdata", (req, res) => {
@@ -135,11 +136,11 @@ app.get("/getdata", (req, res) => {
 
 
 app.get("/closeclient", (req, res) => {
-  
+
   console.log('closed');
 
   var message = '-1';
-  closeFlag=true;
+  closeFlag = true;
   client.send(message, 0, message.length, UDP_PORT, UDP_HOST, function (err, bytes) {
     if (err) throw err;
     console.log('UDP client message sent to ' + UDP_HOST + ':' + UDP_PORT);

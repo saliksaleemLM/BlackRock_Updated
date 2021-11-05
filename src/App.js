@@ -38,6 +38,7 @@ function App() {
     axios.post('http://localhost:3000/getchanneldata', { val: ch }).then((res) => {
 
       console.log(res)
+      console.log("handle CLick called again")
 
     }).catch((err) => {
       console.log(err)
@@ -86,7 +87,7 @@ function App() {
 
   const hideModal = () => {
 
-  localStorage.setItem('chan', -1);
+    localStorage.setItem('chan', -1);
     setShowModal(false)
 
 
