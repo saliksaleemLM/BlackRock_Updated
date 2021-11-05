@@ -786,7 +786,7 @@ const Graph = ({ GD }) => {
     const lineOptions = {
         scales: {
             x: {
-                display: true,
+                display: false,
                 max: "10000",
                 min: "200",
                 ticks: {
@@ -799,7 +799,7 @@ const Graph = ({ GD }) => {
             },
             y: {
                 // stacked: true,
-                display: true,
+                display: false,
                 max: "800",
                 min: "-5000",
                 ticks: {

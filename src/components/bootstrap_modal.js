@@ -16,27 +16,27 @@ function Example({ showModal, hideModal, ch, GD }) {
       <Button variant="primary" onClick={handleShow}>
         Lauch Graph Here
       </Button>
+     
+        <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={show} onHide={handleClose}>        
 
-      <Modal size="xl" show={show} onHide={handleClose}
-        dialogClassName="modal-90w"
-      >
-        <Modal.Header closeButton className="bg-dark text-white">
-          <Modal.Title>channel ID:{ch}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="bg-dark ">
-          {/* Grpah will appear here */}
-          <Graph GD={GD} />
+          <Modal.Header closeButton className=" text-white py-1 header-bg">
+            <Modal.Title>Channel ID: {ch}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body className="bg-dark ">
+            {/* Grpah will appear here */}
+            <Graph GD={GD} />
 
 
-        </Modal.Body>
-        <Modal.Footer className="bg-dark">
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
+          </Modal.Body>
+          <Modal.Footer className="bg-dark d-none">
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
 
-        </Modal.Footer>
-      </Modal>
+          </Modal.Footer>
+        </Modal>
+       
     </>
-  );
+      );
 }
-export default Example;
+      export default Example;
