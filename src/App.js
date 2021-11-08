@@ -16,7 +16,7 @@ const socket = io.connect("http://localhost:4000")
 
 const demos = {
   htmlPage:
-    '<iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="http://localhost:3002/Data.html"></iframe>'
+    '<iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="http://192.168.70.13/BlackRock/data.html"></iframe>'
 
 };
 function App() {
@@ -48,21 +48,21 @@ function App() {
   useEffect(() => {
 
 
-    window.addEventListener("message", handleMessage, false);
+    // window.addEventListener("message", handleMessage, false);
 
-    function handleMessage(e) {
-      let { key, value, method } = e.data;
-      if (method == 'store') {
-        window.localStorage.setItem(key, value); // Store data in iframe domain local storage
-      } else if (method == 'retrieve') {
-        let response = window.localStorage.getItem(key);
-        e.source.postMessage({
-          key,
-          response,
-          method: 'response'
-        }, '*'); // Retrieve local storage data
-      }
-    }
+    // function handleMessage(e) {
+    //   let { key, value, method } = e.data;
+    //   if (method == 'store') {
+    //     window.localStorage.setItem(key, value); // Store data in iframe domain local storage
+    //   } else if (method == 'retrieve') {
+    //     let response = window.localStorage.getItem(key);
+    //     e.source.postMessage({
+    //       key,
+    //       response,
+    //       method: 'response'
+    //     }, '*'); // Retrieve local storage data
+    //   }
+    // }
     // -------------------------------------------------------------------- 
     // --------------Dont delete this below portion ----------------------
     // --------------------------------------------------------------------
@@ -81,40 +81,40 @@ function App() {
 
     // });
     // console.log(localStorage.key(0))
-    var PERMITTED_DOMAIN = "http://127.0.0.1:5501/my-app/Data.html";
+    //var PERMITTED_DOMAIN = "http://127.0.0.1:5501/my-app/Data.html";
     /**
      * Receiving message from other domain
      */
-    window.addEventListener('message', function (event) {
-      if (event.origin === PERMITTED_DOMAIN) {
-        if (event.data) {
-          localStorage.setItem("localstorage", event.data);
-        } else {
-          localStorage.removeItem("localstorage");
-        }
-      }
-    });
+    // window.addEventListener('message', function (event) {
+    //   if (event.origin === PERMITTED_DOMAIN) {
+    //     if (event.data) {
+    //       localStorage.setItem("localstorage", event.data);
+    //     } else {
+    //       localStorage.removeItem("localstorage");
+    //     }
+    //   }
+    // });
 
 
 
 
-    if (ch > 1) {
+    // if (ch > 1) {
 
-      setShowModal(true);
-
-
-
-      //   console.log("channel1")
-      socket.on('wave', (data1) => {
+    //   setShowModal(true);
 
 
-        dataGather(data1);
 
-      })
-      //   console.log("hele")
-      handleClick()
+    //   //   console.log("channel1")
+    //   socket.on('wave', (data1) => {
 
-    }
+
+    //     dataGather(data1);
+
+    //   })
+    //   //   console.log("hele")
+    //   handleClick()
+
+    // }
 
 
 
