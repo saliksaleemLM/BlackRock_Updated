@@ -16,7 +16,7 @@ const socket = io.connect("http://localhost:4000")
 
 const demos = {
   htmlPage:
-    '<iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="http://localhost:3002/Data.html"></iframe>'
+    '<iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src=""></iframe>'
 
 };
 function App() {
@@ -46,6 +46,17 @@ function App() {
 
   }
   useEffect(() => {
+
+    // var userSet = this.getAttribute('data-userset');
+    // if (window.frames['myframe'] && !userSet){
+    //   this.setAttribute('data-userset', 'true');
+    //   frames['myframe'].location.href='http://test.com/hello?uname='+getUserName();
+    // }
+    // var userSet = this.getAttribute('data-userset');
+    // if (window.frames['myframe'] && !userSet){
+    //     this.setAttribute('data-userset', 'true');
+    //     frames['myframe'].location.href='http://test.com/hello?uname='+getUserName();
+    // }
 
 
     window.addEventListener("message", handleMessage, false);

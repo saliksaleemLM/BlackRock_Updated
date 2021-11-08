@@ -7,9 +7,9 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/all.css">
-    <script src="./js/js/jquery.min.js"></script>
-    <script src="./js/js/chart.js"></script>
-    <script src="./js/js/bootstrap.bundle.js"></script>
+    <script src="/js/js/jquery.min.js"></script>
+    <script src="/js/js/chart.js"></script>
+    <script src="js/js/bootstrap.bundle.js"></script>
     <!-- <script src="js/js/zoompanzoom.js"></script> -->
     <style>
         td {
@@ -22,11 +22,11 @@
         }
 
         .table-bg {
-            margin: 0 auto;
+            /* margin: 0 auto; */
             /* background:  url("1.png") no-repeat; */
             /* display: inline-block; */
-            width: 980px;
-            height: 504px;
+            width: 1540px;
+            height: 792px;
             /* background: no-repeat; */
             overflow: hidden;
             /* margin-left:100px; */
@@ -34,8 +34,8 @@
 
         #mytable {
             background: no-repeat;
-            width: 980px;
-            height: 504px;
+            width: 1540px;
+            height: 792px;;
             /* background: green; */
         }
 
@@ -83,7 +83,13 @@
         .cirlce-holder {
             background: #6c6c6c;
             height: calc(100vh - 90px);
+            /* overflow-x: hidden; */
+            /* overflow-x:hidden;
+            overflow-y: auto; */
+            /* overflow:scroll; */
             overflow: auto;
+
+
         }
 
         .legends {
@@ -308,23 +314,20 @@
         }
 
         #zoomtext {
-            transform: scale(1);
-            transition: transform 0.2s ease-in-out;
-            transform-origin: top left;
+        transform: scale(1);
+        transition: transform 0.2s ease-in-out;
+        transform-origin: top left;
         }
-
-        .txt-holder {
+        .txt-holder{
             text-align: center;
             line-height: 0;
             vertical-align: middle;
         }
-
         .circle-txt {
-            font-size: 1px;
-            /* background: red; */
-            vertical-align: top;
-            display: none;
-        }
+    font-size: calc(1px + (15 - 14) * ((100vw - 300px) / (1600 - 300)));
+    text-align: center;
+    vertical-align:middle;
+    display: none;}
     </style>
 </head>
 
@@ -363,12 +366,12 @@
                 <div class="cirlce-holder" id="cHolder">
                     <label id="counter"></label>
                     <div id="zoomtext">
-                        <div class="my_div">
-                            <div class="table-bg" id="table-bg">
-                                <table id="mytable" class="border-0">
-                                </table>
-                            </div>
+                    <div class="my_div">
+                        <div class="table-bg" id="table-bg">
+                            <table id="mytable" class="border-0">
+                            </table>
                         </div>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -446,9 +449,9 @@
         var counter = 15;
         var tdWidth = 0, ScreenWidth = 0, Rows = 0, Columns = 0, TotalCircles = 10000;
         let slist = '';
-        var lineMainChartCanvas = null;
-        var ismodelOPen = false;
-        var lineChart = null;
+        var lineMainChartCanvas=null;
+        var ismodelOPen=false;
+        var lineChart=null;
         $(document).ready(function () {
             FillColorsLi();
         });
@@ -530,74 +533,73 @@
         function WebSocketTest() {
             var socket;
             socket = io.connect('http://localost:4000/');
-            socket.on('wave', function (temp) {
+            socket.on('wave', function(temp){
                 console.log(temp);
                 $('#messages').html(temp);
             });
             // if ("WebSocket" in window) {
             //    alert("WebSocket is supported by your Browser!");
-
+               
             //    // Let us open a web socket
             //    var ws = new WebSocket("ws://192.168.70.21:52021");
-
+				
             //    ws.onopen = function() {
-
+                  
             //       // Web Socket is connected, send data using send()
             //       ws.send("1");
             //       alert("Message is sent...");
             //    };
-
+				
             //    ws.onmessage = function (evt) { 
             //       var received_msg = evt.data;
             //       alert("Message is received...");
             //    };
-
+				
             //    ws.onclose = function() { 
-
+                  
             //       // websocket is closed.
             //       alert("Connection is closed..."); 
             //    };
             // } else {
-
+              
             //    // The browser doesn't support WebSocket
             //    alert("WebSocket NOT supported by your Browser!");
             // }
-        }
+         }
 
         //endsocket
 
         function sendData() {
             var cNo = $('#GraphModelLabel').text();
             var value = cNo.replace('Channel', '').trim();
+            $.ajax({
+                type: "POST",
+                dataType: "text",
+                crossDomain: true,
+                url: "../getchanneldata",
+                //contentType: 'application/x-www-form-urlencoded',
+                data: { val: value },
+                success: function (response) {
 
-            // $.ajax({
-            //     type: "POST",
-            //     dataType: "text",
-            //     crossDomain: true,
-            //     url: "../getchanneldata",
-            //     //contentType: 'application/x-www-form-urlencoded',
-            //     data: { val: value },
-            //     success: function (response) {
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
 
-            //     },
-            //     error: function (jqXHR, textStatus, errorThrown) {
-
-            //     },
-            // });
-            // RecData(value);
+                },
+            });
+            RecData(value);
         }
         function RecData(cNo) {
             $.ajax({
                 type: "GET",
-                dataType: "text",
+                dataType:"text",
                 crossDomain: true,
                 url: "../getdata",
                 contentType: 'application/x-www-form-urlencoded',
-                success: function (response) {
+                success: function(response) {
                     GetSocketData(response);
                 },
-                error: function (jqXHR, textStatus, errorThrown) {
-                    //alert("error");
+                error: function(jqXHR, textStatus, errorThrown) {
+                //alert("error");
                 },
             });
         }
@@ -613,8 +615,8 @@
                 for (let j = 1; j <= 140; j++) {
                     if (tdName <= 10000) {
                         html += '<td class="txt-holder" title="Channel No ' + tdName + '" id="' + tdName + '" onclick="FunName(' + tdName + ')">',
-                            html += `<span class="circle-txt" >${tdName}</span>`,
-                            html += '</td>';
+                        html += '<span class="circle-txt">10,000</span>',
+                        html += '</td>';
                         tdName++;
                     }
                 }
@@ -622,33 +624,11 @@
             }
             document.getElementById("mytable").innerHTML = html;
         }
-
         function FunName(paramName) {
             $('#GraphModelLabel').text('Channel ' + paramName);
-            localStorage.setItem('chan', paramName);
-            function postCrossDomainMessage(msg) {
-                var win = document.getElementById('ifr').contentWindow;
-                win.postMessage(msg, "http://localhost:3001/");
-            }
-            var postMsg = { "login": "user" }; // this is just example
-            postCrossDomainMessage(postMsg);
+            localStorage.setItem("chan",paramName);
+            sendData();
 
-
-
-
-            // window.onload = function () {
-            //     var receiver = document.getElementById('receiver').ifr;
-            //     console.log("asdjsad")
-            //     console.log(receiver);
-            // }
-            // console.log("salik")
-            // var win = document.getElementById('ifr').contentWindow;
-
-            // if (win) { // iFrame exists
-            //     var postMsg = { "chan": paramName }; // this is just example
-            //     win.postMessage(postMsg, "http://localhost:3001");
-            //     // sendData();
-            // }
         }
         function setFrequency() {
             var fmax = document.getElementById("text1").value;
@@ -671,6 +651,7 @@
             });
         }
         async function myFunction() {
+
             var i = 0;
             while (loop) {
                 document.getElementById("table-bg").style.backgroundImage = "url('./" + counter + ".png?v=" + i + "')";
@@ -692,7 +673,7 @@
         $("#GraphModel").on("hidden.bs.modal", function () {
             //debugger;
             lineChart.destroy();
-            ismodelOPen = false;
+            ismodelOPen=false;
             $.ajax({
                 type: "GET",
                 dataType: "text",
@@ -809,161 +790,132 @@
     <script id="MainGraph">
         async function GetSocketData(data) {
 
-            data = JSON.parse(data);
-            if (data.length != 0) {
+            data=JSON.parse(data);
+            if(data.length!=0){
                 $('#GraphModel').modal('show');
-                ismodelOPen = true;
+                ismodelOPen=true;
                 var a = 0;
-                var loopnum = 10;
-                var lblarr = [];
-                for (var i = 0; i < data[0].length; i++) {
-                    lblarr.push('');
-                }
-                lineMainChartCanvas = $('#mainChart').get(0).getContext('2d')
-                lineChart = new Chart(lineMainChartCanvas, {
-                    type: 'line',
-                    data: null,
-                    showTooltips: false,
-                    options: {
-                        tension: 0.4,
-                        // animation: {
-                        //     duration: 1,
-                        // },
-                        scales:
-                        {
-                            xAxes: [{
+            var loopnum = 10;
+            var lblarr = [];
+            for (var i = 0; i < data[0].length; i++) {
+                lblarr.push('');
+            }
+            lineMainChartCanvas = $('#mainChart').get(0).getContext('2d')
+            lineChart = new Chart(lineMainChartCanvas, {
+                type: 'line',
+                data: null,
+                showTooltips: false,
+                options: {
+                    tension: 0.4,
+                    // animation: {
+                    //     duration: 1,
+                    // },
+                    scales:
+                    {
+                        xAxes: [{
+                            display: false
+                        }],
+                        yAxes: [{
+                            gridLines: {
+                                zeroLineColor: 'red',
+                                zeroLineWidth: 2,
+                                lineWidth: 0,
+                                drawTicks: false,
+                            }, ticks: {
                                 display: false
-                            }],
-                            yAxes: [{
-                                gridLines: {
-                                    zeroLineColor: 'red',
-                                    zeroLineWidth: 2,
-                                    lineWidth: 0,
-                                    drawTicks: false,
-                                }, ticks: {
-                                    display: false
-                                }
-                            }]
-                        },
-
-                    }
-                })
-                while (true) {
-                    //console.log(data[a]);
-                    if (ismodelOPen == false) {
-                        debugger;
-                        return false;
-                    }
-
-                    var randomArr = data[a];//Array.apply(null, Array(100)).map(function() { return Math.floor(Math.random() * 1000 % 1000); });
-                    // for (var i = 0; i < 50; i++) {
-                    //     //var num= Math.floor(Math.random() * (5000 - 1) + 1);//Math.ceil(Math.random() * 99) * (Math.round(Math.random()) ? 1 : -1);
-                    //     var num = Math.ceil(Math.random() * 99) * (Math.round(Math.random()) ? 1 : -1);
-                    //     randomArr.push(num);
-                    // }
-                    // console.log(randomArr);
-                    lineChart.data.labels = lblarr;
-                    lineChart.data.datasets.push({
-                        fill: false,
-                        borderWidth: 1,
-                        borderColor: 'white',
-                        data: randomArr,
-                        pointRadius: 0.5,
-                    });
-                    if (a % 500 == 0) {
-                        //debugger
-                        lineChart.destroy();
-                        lineMainChartCanvas = $('#mainChart').get(0).getContext('2d')
-                        lineChart = new Chart(lineMainChartCanvas, {
-                            type: 'line',
-                            data: null,
-                            showTooltips: false,
-                            options: {
-                                tension: 0.4,
-                                // animation: {
-                                //     duration: 1,
-                                // },
-                                scales:
-                                {
-                                    xAxes: [{
-                                        display: false
-                                    }],
-                                    yAxes: [{
-                                        gridLines: {
-                                            zeroLineColor: 'red',
-                                            zeroLineWidth: 2,
-                                            lineWidth: 0,
-                                            drawTicks: false,
-                                        }, ticks: {
-                                            display: false
-                                        }
-                                    }]
-                                },
                             }
-                        })
-                    } else {
-                        lineChart.update();
-                        await timer(50);
-                    }
-                    a++;
+                        }]
+                    },
+
                 }
+            })
+            while (true) {
+                //console.log(data[a]);
+                if(ismodelOPen==false){
+                    debugger;
+                    return false;
+                }
+
+                var randomArr = data[a];//Array.apply(null, Array(100)).map(function() { return Math.floor(Math.random() * 1000 % 1000); });
+                // for (var i = 0; i < 50; i++) {
+                //     //var num= Math.floor(Math.random() * (5000 - 1) + 1);//Math.ceil(Math.random() * 99) * (Math.round(Math.random()) ? 1 : -1);
+                //     var num = Math.ceil(Math.random() * 99) * (Math.round(Math.random()) ? 1 : -1);
+                //     randomArr.push(num);
+                // }
+               // console.log(randomArr);
+                lineChart.data.labels = lblarr;
+                lineChart.data.datasets.push({
+                    fill: false,
+                    borderWidth: 1,
+                    borderColor: 'white',
+                    data: randomArr,
+                    pointRadius: 0.5,
+                });
+                if (a % 500 == 0) {
+                    //debugger
+                    lineChart.destroy();
+                    lineMainChartCanvas = $('#mainChart').get(0).getContext('2d')
+                    lineChart = new Chart(lineMainChartCanvas, {
+                        type: 'line',
+                        data: null,
+                        showTooltips: false,
+                        options: {
+                            tension: 0.4,
+                            // animation: {
+                            //     duration: 1,
+                            // },
+                            scales:
+                            {
+                                xAxes: [{
+                                    display: false
+                                }],
+                                yAxes: [{
+                                    gridLines: {
+                                        zeroLineColor: 'red',
+                                        zeroLineWidth: 2,
+                                        lineWidth: 0,
+                                        drawTicks: false,
+                                    }, ticks: {
+                                        display: false
+                                    }
+                                }]
+                            },
+                        }
+                    })
+                } else {
+                    lineChart.update();
+                    await timer(50);
+                }
+                a++;
+            }
             }
 
         }
     </script>
 
-    <!-- New Zoom -->
-    <script>
-        var zoom = 1;
-        var zoomStep = 2;
-        var reset = 1;
-
-        //zoom out
-        document.getElementById("zoomIn").addEventListener("click", function () {
-
-            let a = document.getElementById("table-bg").style.margin = "0px";
-
-            zoom += zoomStep;
-            if (zoom == 5) {
-
-                var elems = document.getElementsByClassName('circle-txt');
-                for (var i = 0; i < elems.length; i += 1) {
-                    elems[i].style.display = 'block';
-                }
-            }
-
-            document.getElementById("zoomtext").style.transform = "scale(" + zoom + ")";
-        });
-        //zoom in
-        document.getElementById("zoomOut").addEventListener("click", function () {
-
-            if (zoom <= 3) {
-                document.getElementById("table-bg").style.margin = "0 auto";
-            }
-            if (zoom == 5) {
-                var elems = document.getElementsByClassName('circle-txt');
-                for (var i = 0; i < elems.length; i += 1) {
-                    elems[i].style.display = 'none';
-                }
-            }
-            if (zoom > zoomStep) {
-                console.log(zoom)
-                zoom -= zoomStep;
-                document.getElementById("zoomtext").style.transform = "scale(" + zoom + ")";
-
-            }
-        });
-        //zoom reset
-        document.getElementById("reset").addEventListener("click", function () {
-            let a = document.getElementById("table-bg").style.margin = "0 auto";
-            zoom = reset;
-            var elems = document.getElementsByClassName('circle-txt');
-            for (var i = 0; i < elems.length; i += 1) {
-                elems[i].style.display = 'none';
-            }
-
-            document.getElementById("zoomtext").style.transform = "scale(" + zoom + ")";
-        });
-    </script>
-    <!-- New Zoom -->
+ <!-- New Zoom -->
+<script>
+	var zoom = 1;
+	var zoomStep = 2;
+    var reset = 1;
+    
+    //zoom out
+	document.getElementById("zoomIn").addEventListener("click", function() {
+        zoom += zoomStep;
+	document.getElementById("zoomtext").style.transform = "scale(" + zoom + ")";
+	});
+    //zoom in
+	document.getElementById("zoomOut").addEventListener("click", function() {
+	if (zoom > zoomStep) {
+	zoom -= zoomStep;
+	document.getElementById("zoomtext").style.transform = "scale(" + zoom + ")";
+	}
+	});
+    //zoom reset
+    document.getElementById("reset").addEventListener("click", function() {
+        zoom = reset;
+	document.getElementById("zoomtext").style.transform = "scale(" + zoom + ")";
+	});
+ </script>
+  <!-- New Zoom -->
 </body>
