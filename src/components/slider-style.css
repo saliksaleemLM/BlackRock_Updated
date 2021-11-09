@@ -1,20 +1,41 @@
-input[type=range][orient=vertical]
+ input[type=range][orient=vertical]
 {
     /* writing-mode: bt-lr;  */
     -webkit-appearance: slider-vertical; 
-    width: 8px;
+     width: 4px;
     height: 300px;
-    padding: 20px 20px;
+    /* padding: 20px 20px; */ 
+ }  
+
+input[type=range]::-webkit-slider-runnable-track {
+    width: 15px;
+    height: 300px;
+    background-color: #d8cbcb;
+    border: none;
+    border-radius: 3px;
 }
+
 input[type=range]::-webkit-slider-thumb {
-    background: red;
+    -webkit-appearance: none;
+    border: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: rgb(204, 191, 158);
+    margin-top: -4px;
 }
-input[type=range]::-moz-range-thumb {
-    background: red;
+
+input[type=range]:focus {
+    outline: none;
 }
-input[type=range]::-ms-thumb {
-    background: red;
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+    background: #d8cbcb;
 }
+
+  
+  
+  
 #zoom-graph{
     overflow:auto;
     width:600px;
