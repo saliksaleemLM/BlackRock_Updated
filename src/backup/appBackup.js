@@ -20,15 +20,15 @@ const demos = {
 function App() {
   const [showModal, setShowModal] = useState(false)
   const [ch, setCh] = useState(-1);
-  const [count, setCount] = useState(0)
-
+  const[count,setCount]=useState(0)
+  const [zoom,setZoom]=useState(1);
   const [GD, setGD] = useState([])
   const dataGather = (data1) => {
+    setGD(GD => [data1, ...GD])
 
-    
-    
-      setGD(GD => [data1, ...GD])
- 
+
+
+
   }
   const handleChannelId = () => {
     axios.get("http://localhost:3000/getChannelId").then((res) => {
@@ -45,31 +45,33 @@ function App() {
     socket.on('wave', (data1) => {
 
       // console.log("count"+count);
-      if (count < 1) {
+      if (count<1) {
         setShowModal(true);
-        setCount(count + 1);
+        setCount(count+1);
         handleChannelId()
 
       }
 
-      dataGather(data1);
+
+      dataGather(data1*zoom);
     })
 
   }, [count]);
+  const handleZoom=()=>{
 
+
+  }
 
 
 
   const hideModal = () => {
     // console.log("hello g")
     setCount(0)
-    setGD([])
 
-    setShowModal(false)
     axios.get("http://localhost:3000/closeclient").then((response) => {
       console.log(response)
-
-
+      setShowModal(false)
+    
       setGD([])
 
     }).catch((err) => {
@@ -86,7 +88,7 @@ function App() {
 
 
 
-      {showModal == true ? <Example hideModal={hideModal} GD={GD} ch={ch} /> : <></>}
+      {showModal == true ? <Example showModal={showModal} hideModal={hideModal} GD={GD} ch={ch} /> : <></>}
     </div>
   );
 }

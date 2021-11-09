@@ -25,12 +25,13 @@ var cors = require('cors');
 const { Console } = require("console");
 
 // use it before all route definitions
-app.use(cors());
+app.use(cors());  
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json())
 const readIni = () => {
   console.log(configuration.fsetting.fmin);
 }
+
 app.post("/updateFSettingIni", (req, res) => {
   console.log('Updating FSetting', req.body);
   console.log("fmin = " + req.body.fmin);

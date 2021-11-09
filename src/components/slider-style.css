@@ -1,0 +1,26 @@
+input[type=range][orient=vertical]
+{
+    /* writing-mode: bt-lr;  */
+    -webkit-appearance: slider-vertical; 
+    width: 8px;
+    height: 300px;
+    padding: 20px 20px;
+}
+input[type=range]::-webkit-slider-thumb {
+    background: red;
+}
+input[type=range]::-moz-range-thumb {
+    background: red;
+}
+input[type=range]::-ms-thumb {
+    background: red;
+}
+#zoom-graph{
+    overflow:auto;
+    width:600px;
+    height:350px;
+    transform-origin: top left;
+}
+.zoom-col{
+        transform: scale(1);
+}
