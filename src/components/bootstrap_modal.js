@@ -4,21 +4,36 @@ import axios from "axios"
 // import Zoom from "./zoom"
 import "./slider-style.css"
 import Graph from "./graphshow.component"
-function Example({ ch, hideModal, GD }) {
-  const [show, setShow] = useState(true);
+function Example({ ch, hideModal, GD, showModal }) {
+  const [show, setShow] = useState(showModal);
 
   const [zoom, setZoom] = useState(1);
 
   const handleClose = () => {
-    setShow(false);
+    axios.get("http://localhost:3000/closeclient").then((response) => {
+      
+      console.log(response)
+
+    }).catch((err) => {
+      console.log(err)
+      
+    })
     hideModal();
-    console.log("closeing your modal")
+    setShow(false);
+
+
 
   }
   const handleChange = (e) => {
-    let val = e.target.value * 0.01;
-    setZoom(e.target.value*0.05);
+    let val = e.target.value;
+    if (val < 50) {
 
+      setZoom(e.target.value * 2);
+
+    }
+    else {
+      setZoom(e.target.value * 0.5)
+    }
 
 
   }
@@ -31,7 +46,7 @@ function Example({ ch, hideModal, GD }) {
     <>
 
 
-      <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" centered show={show} onHide={() => { setShow(false) }} >
+      <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" backdrop="static" keyboard={false} centered show={show} onHide={handleClose}  >
 
         <Modal.Header closeButton className=" text-white py-1 header-bg">
           <Modal.Title>Channel ID: {ch}</Modal.Title>
@@ -40,10 +55,11 @@ function Example({ ch, hideModal, GD }) {
         <Modal.Body className="bg-dark ">
           <Row>
             <Col lg={11}>
-            <div id="zoom-graph" >
-              <div className="zoom-col" style={{ transform: `scaleY(${zoom})` }}><Graph GD={GD} /></div></div>
-              </Col><Col lg={1}>  <input type="range"  class="form-range" orient="vertical" onChange={handleChange} min="1" max="100" step="5" id="customRange3"></input>
+              <div id="zoom-graph" >
+                <div className="zoom-col" ><Graph GD={GD} zoom={zoom} /></div></div>
+            </Col><Col lg={1}>  <input type="range" class="form-range" orient="vertical" onChange={handleChange} min="1" max="100" step="1" id="customRange3"></input>
             </Col>
+
           </Row>
 
 
@@ -51,16 +67,6 @@ function Example({ ch, hideModal, GD }) {
 
 
         </Modal.Body>
-
-        {/* <Modal.Footer className="bg-dark d-none">
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <button className="zoom-in">Zoom IN</button>
-
-          <button className="zoom-out">Zoom OUT</button>
-
-        </Modal.Footer> */}
       </Modal>
 
     </>

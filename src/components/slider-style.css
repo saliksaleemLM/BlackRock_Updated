@@ -1,41 +1,103 @@
- input[type=range][orient=vertical]
+input[type=range][orient=vertical]
 {
     /* writing-mode: bt-lr;  */
     -webkit-appearance: slider-vertical; 
-     width: 4px;
+    width: 8px;
     height: 300px;
-    /* padding: 20px 20px; */ 
- }  
-
-input[type=range]::-webkit-slider-runnable-track {
-    width: 15px;
-    height: 300px;
-    background-color: #d8cbcb;
-    border: none;
-    border-radius: 3px;
+    padding: 20px 20px;
 }
-
+.form-range{}
 input[type=range]::-webkit-slider-thumb {
+    
+    -moz-appearance: none;
+    -webkit-border-radius: 5px;
+    /*16x16px adjusted to be same as 14x14px on moz*/
+    height: 40px;
+    width: 100px;
+    border-radius: 5px;
+    background-color: red !important;
+    border: 1px solid #c5c5c5;
+  }
+  
+input[type="range"]::-webkit-slider-track {
     -webkit-appearance: none;
+    -moz-appearance: none;
+    -webkit-border-radius: 5px;
+    /*16x16px adjusted to be same as 14x14px on moz*/
+    height: 40px;
+  color:red;
+    width: 100px;
+    border-radius: 5px;
+    background-color: red !important;
+    border: 1px solid #c5c5c5;
+  }
+  
+  
+  /*Mozilla thumb*/
+  
+  input[type="range"]::-moz-range-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -moz-border-radius: 5px;
+    height: 14px;
+    width: 14px;
+    border-radius: 5px;
+    background: #e7e7e7;
+    border: 1px solid #c5c5c5;
+  }
+  
+  
+  /*IE & Edge input*/
+  
+  input[type=range]::-ms-track {
+    width: 300px;
+    height: 6px;
+    /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+    background: transparent;
+    /*leave room for the larger thumb to overflow with a transparent border */
+    border-color: transparent;
+    border-width: 2px 0;
+    /*remove default tick marks*/
+    color: transparent;
+  }
+  
+  
+  /*IE & Edge thumb*/
+  
+  input[type=range]::-ms-thumb {
+    height: 14px;
+    width: 14px;
+    border-radius: 5px;
+    background: #e7e7e7;
+    border: 1px solid #c5c5c5;
+  }
+  
+  
+  /*IE & Edge left side*/
+  
+  input[type=range]::-ms-fill-lower {
+    background: #919e4b;
+    border-radius: 2px;
+  }
+  
+  
+  /*IE & Edge right side*/
+  
+  input[type=range]::-ms-fill-upper {
+    background: #c5c5c5;
+    border-radius: 2px;
+  }
+  
+  
+  /*IE disable tooltip*/
+  
+  input[type=range]::-ms-tooltip {
+    display: none;
+  }
+  
+  input[type="text"] {
     border: none;
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    background: rgb(204, 191, 158);
-    margin-top: -4px;
-}
-
-input[type=range]:focus {
-    outline: none;
-}
-
-input[type=range]:focus::-webkit-slider-runnable-track {
-    background: #d8cbcb;
-}
-
-  
-  
-  
+  }
 #zoom-graph{
     overflow:auto;
     width:600px;

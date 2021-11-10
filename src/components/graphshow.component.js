@@ -1,12 +1,19 @@
-import { Line } from "react-chartjs-2"
+import { Line, Chart } from "react-chartjs-2"
 import { useState, useEffect } from "react"
-const Graph = ({ GD }) => {
-
+import zoomPlugin from "chartjs-plugin-zoom";
+const Graph = ({ GD,zoom }) => {
+    Chart.register(zoomPlugin);
 
     const [data, setData] = useState({})
 
+
     useEffect(() => {
         condition()
+        if(GD.length>50)
+        {
+            GD=[];
+        }
+        // GD = []
 
     }, [GD])
 
@@ -14,9 +21,7 @@ const Graph = ({ GD }) => {
     const condition = () => {
 
         if (GD.length > 1) {
-            
 
-            // console.log("hwllo i am changing"+typeof(GD))
             setData({
                 labels: [
                     "1",
@@ -398,49 +403,62 @@ const Graph = ({ GD }) => {
 
                 ]
             });
+
         } else {
             {
                 setData({});
             }
         }
     }
-    const lineOptions = {
+    const options = {
         scales: {
-            xAxes: [{
-                display: false,
-                max:50000,
-                min:-50000,
-               
-              
+            x: {
+                display: true,
+                min:1,
+                max:30,
 
-            }],
-            yAxes:[ {
+
+            },
+            y: {
+
+                display: true,
+                min:-270,
+                max:150,
+                ticks: {
+                    // forces step size to be 50 units
+                    stepSize: 10*zoom,
+                  }
+
                 // stacked: true,
+            },
+        },
+
+        plugins: {
+
+            legend: {
                 display: false,
-                max:50000,
-                min:-50000,
-              
-            
-
-
-            }],
-        },
-        legend: {
-            display: false,
-        },
-        tooltips: {
-            enabled: false,
-        },
-
-   
-
-    };
-
+            },
+            tooltips: {
+                enabled: false,
+            },
+            zoom: {
+                zoom: {
+                    wheel: {
+                        enabled: true,
+                    },
+                    pinch: {
+                        enabled: true,
+                    },
+                    mode: "xy",
+                },
+            }
+        }
+    }
     return (
         <>
             <div className="App-main">
-       
-                <Line data={data} options={lineOptions} />
+
+                <Line data={data} options={options} />
             </div>
         </>
     )
