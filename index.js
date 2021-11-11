@@ -136,13 +136,13 @@ app.get("/getdata", (req, res) => {
 });
 
 
-app.get("/closeclient", (req, res) => {
+app.get("/closeclient", async(req, res) => {
 
   console.log('closed');
 
   var message = '-1';
   closeFlag = true;
-  client.send(message, 0, message.length, UDP_PORT, UDP_HOST, function (err, bytes) {
+  await client.send(message, 0, message.length, UDP_PORT, UDP_HOST, function (err, bytes) {
     if (err) throw err;
     console.log('UDP client message sent to ' + UDP_HOST + ':' + UDP_PORT);
     res.json({ message: 'closed' });

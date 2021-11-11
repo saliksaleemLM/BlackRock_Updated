@@ -20,7 +20,7 @@ const demos = {
 const socket = io.connect("http://localhost:4000")
 function App() {
   const [showModal, setShowModal] = useState(false)
-  const [ch, setCh] = useState(-1);
+  
   const [count, setCount] = useState(0)
   
   const [GD, setGD] = useState([])
@@ -31,29 +31,29 @@ function App() {
     setGD(GD => [data1, ...GD])
 
   }
-  const handleChannelId = () => {
-    axios.get("http://localhost:3000/getChannelId").then((res) => {
-      const getCh = res.data.chan
-      setCh(getCh);
+  // const handleChannelId = () => {
+  //   axios.get("http://localhost:3000/getChannelId").then((res) => {
+  //     const getCh = res.data.chan
+  //     setCh(getCh);
 
-    }).catch((err) => {
-      console.log(err.response)
-    })
-  }
+  //   }).catch((err) => {
+  //     console.log(err.response)
+  //   })
+  // }
   useEffect(() => {
 
 
   
-     console.log("hello")
+ 
       
         socket.on('wave', (data1) => {
-          console.log("success");
+        
           // console.log("count"+count);
           //i  want to run this part only one time so i used count here
           if (count < 1) {
             setCount(1)
             setShowModal(true);
-            handleChannelId();
+            // handleChannelId();
     
           }
          
@@ -70,7 +70,7 @@ function App() {
 
 
   const hideModal = () => {
-    
+    // socket.disconnect();
     setCount(0);
     setShowModal(false)
     setGD([])
@@ -84,7 +84,7 @@ function App() {
       <Iframe iframe={demos["htmlPage"]} allow="autoplay" className="ifr1" sandbox="allow-scripts"  />
 
 
-      {showModal == true ? <Example hideModal={hideModal} GD={GD} ch={ch} showModal={showModal} /> : <></>}
+      {showModal == true ? <Example hideModal={hideModal} GD={GD}  showModal={showModal} /> : <></>}
     </div>
   );
 }

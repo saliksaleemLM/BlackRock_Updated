@@ -2,7 +2,8 @@ import { Line, Chart } from "react-chartjs-2"
 import { useState, useEffect } from "react"
 import zoomPlugin from "chartjs-plugin-zoom";
 const Graph = ({ GD,zoom }) => {
-    Chart.register(zoomPlugin);
+
+    Chart.register(zoomPlugin); 
 
     const [data, setData] = useState({})
 
@@ -423,11 +424,8 @@ const Graph = ({ GD,zoom }) => {
 
                 display: true,
                 min:-270,
-                max:150,
-                ticks: {
-                    // forces step size to be 50 units
-                    stepSize: 10*zoom,
-                  }
+                max:150+zoom,
+             
 
                 // stacked: true,
             },
