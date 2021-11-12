@@ -10,10 +10,6 @@ const Graph = ({ GD, zoom }) => {
 
     useEffect(() => {
         condition()
-        if (GD.length > 50) {
-            GD[50] = [];
-        }
-        // GD = []
 
     }, [GD])
 
@@ -81,14 +77,14 @@ const Graph = ({ GD, zoom }) => {
                         label: "1",
                         fill: false,
                         pointRadius: 0,
-
+                        borderWidth: 1,
                         borderColor: "#BCBCBC",
                         data: GD[0]
                     },
                     {
                         label: "2",
                         fill: false,
-
+                        borderWidth: 1,
                         borderColor: "#BCBCBC",
                         pointRadius: 0,
                         data: GD[1]
@@ -189,122 +185,122 @@ const Graph = ({ GD, zoom }) => {
                     }, {
                         label: "16",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[15]
                     }, {
                         label: "17",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[16]
                     }, {
                         label: "18",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[17]
                     }, {
                         label: "19",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[18]
                     }, {
                         label: "20",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[19]
                     }, {
                         label: "21",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[20]
                     }, {
                         label: "22",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[21]
                     }, {
                         label: "23",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[22]
                     }, {
                         label: "24",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[23]
                     }, {
                         label: "25",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[24]
                     }, {
                         label: "26",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[25]
                     }, {
                         label: "27",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[26]
                     }, {
                         label: "28",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[27]
                     }, {
                         label: "29",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[28]
                     }, {
                         label: "30",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[29]
                     }, {
                         label: "31",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[30]
                     }, {
                         label: "32",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[31]
                     }, {
                         label: "33",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[32]
                     }, {
                         label: "34",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[33]
                     },
                     {
                         label: "35",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[34]
                     }
@@ -312,91 +308,91 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "36",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[35]
                     },
                     {
                         label: "37",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[36]
                     },
                     {
                         label: "38",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[37]
                     },
                     {
                         label: "39",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[38]
                     },
                     {
                         label: "40",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[39]
                     },
                     {
                         label: "41",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[40]
                     },
                     {
                         label: "42",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[41]
                     },
                     {
                         label: "43",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[42]
                     },
                     {
                         label: "44",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[43]
                     },
                     {
                         label: "45",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[44]
                     },
                     {
                         label: "46",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[45]
                     },
                     {
                         label: "47",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[46]
                     },
                     {
                         label: "48",
                         fill: false,
-                        borderColor: "#BCBCBC",
+                        borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[47]
                     },
@@ -404,7 +400,7 @@ const Graph = ({ GD, zoom }) => {
                         label: "49",
                         fill: false,
 
-                        borderColor: "red",
+                        borderColor: "red", borderWidth: 1,
                         pointRadius: -1,
                         data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                     },
@@ -422,42 +418,43 @@ const Graph = ({ GD, zoom }) => {
                         "3",
                         "4",
                         "5"],
-                        datasets: [
+                    datasets: [
                         {
                             label: "45",
                             fill: false,
                             borderColor: "#BCBCBC",
                             pointRadius: 0,
-                           
-                            data:[1,2,5,32,23,99,984,689,546,786,234,57,78,768,465,3,5,476,68,5,6745,645,64,76,8,74,56,4564,57,867,8,456,456,436,7]
+
+                            data: [1, 2, 5, 32, 23, 99, 984, 689, 546, 786, 234, 57, 78, 768, 465, 3, 5, 476, 68, 5, 6745, 645, 64, 76, 8, 74, 56, 4564, 57, 867, 8, 456, 456, 436, 7]
                         },
                         {
                             label: "46",
                             fill: false,
                             borderColor: "#BCBCBC",
                             pointRadius: 0,
-                            
-                            data:[1,2,5,32,23,99,984,689,546,786,234,57,78,768,465,3,5,476,68,5,6745,645,64,76,8,74,56,4564,57,867,8,456,456,436,7]
+
+                            data: [1, 2, 5, 32, 23, 99, 984, 689, 546, 786, 234, 57, 78, 768, 465, 3, 5, 476, 68, 5, 6745, 645, 64, 76, 8, 74, 56, 4564, 57, 867, 8, 456, 456, 436, 7]
                         },
                         {
                             label: "47",
                             fill: false,
                             borderColor: "#BCBCBC",
                             pointRadius: 0,
-                            data:[1,2,5,32,23,99,984,689,546,786,234,57,78,768,465,3,5,476,68,5,6745,645,64,76,8,74,56,4564,57,867,8,456,456,436,7]
+                            data: [1, 2, 5, 32, 23, 99, 984, 689, 546, 786, 234, 57, 78, 768, 465, 3, 5, 476, 68, 5, 6745, 645, 64, 76, 8, 74, 56, 4564, 57, 867, 8, 456, 456, 436, 7]
                         },
                         {
                             label: "48",
                             fill: false,
                             borderColor: "#BCBCBC",
                             pointRadius: 0,
-                            data:[1,2,5,32,23,45,234,65,234,234,5646,57,78,78,465,3,5,476,68,5,6745,645,64,76,8,74,56,4564,57,867,8,456,456,5876,7],
+                            data: [1, 2, 5, 32, 23, 45, 234, 65, 234, 234, 5646, 57, 78, 78, 465, 3, 5, 476, 68, 5, 6745, 645, 64, 76, 8, 74, 56, 4564, 57, 867, 8, 456, 456, 5876, 7],
                         },
                         {
                             label: "49",
                             fill: false,
-    
+
                             borderColor: "red",
+
                             pointRadius: -1,
                             data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                         },]
@@ -469,20 +466,22 @@ const Graph = ({ GD, zoom }) => {
     const options = {
         scales: {
             xAxes: {
-                display: false,
+                display: true,
+                min: -10,
+                max: 48,
 
-                
-                 grid: {
-                    drawBorder: true,
-                    color:"blue",
-        }
             },
             yAxes: {
 
                 display: true,
-                min: -450,
-                max: 400,
-              
+                max: (zoom/2),
+                min: -(zoom/2),
+
+                grid: {
+                    drawBorder: true,
+                    color: "#3a3838",
+                }
+
 
                 // stacked: true,
             },
@@ -497,17 +496,69 @@ const Graph = ({ GD, zoom }) => {
                 enabled: false,
             },
             zoom: {
-                
-            pan: {
-                enabled: true,
-                mode: "xy",
-                speed: 1
-              },
+
+                pan: {
+                    enabled: true,
+                    mode: "xy",
+                    speed: 1
+                },
                 zoom: {
                     wheel: {
                         enabled: true,
                     },
-                   
+
+                    // pinch: {
+                    //     enabled: true,
+                    // },
+                    mode: "xy",
+                },
+            }
+        }
+    }
+    const options2 = {
+        scales: {
+            xAxes: {
+                display: true,
+                min: 1,
+                max: 48,
+
+            },
+            yAxes: {
+
+                display: true,
+                max: zoom * 10,
+                min: -(zoom * 10),
+
+                grid: {
+                    drawBorder: true,
+                    color: "#3a3838",
+                }
+
+
+                // stacked: true,
+            },
+        },
+
+        plugins: {
+
+            legend: {
+                display: false,
+            },
+            tooltips: {
+                enabled: false,
+            },
+            zoom: {
+
+                pan: {
+                    enabled: true,
+                    mode: "xy",
+                    speed: 1
+                },
+                zoom: {
+                    wheel: {
+                        enabled: true,
+                    },
+
                     // pinch: {
                     //     enabled: true,
                     // },
@@ -519,8 +570,13 @@ const Graph = ({ GD, zoom }) => {
     return (
         <>
             <div className="App-main">
+                {
+                    console.log(zoom),
+                    zoom > 50 ?
+                        <Line data={data} options={options} />
+                        : <Line data={data} options={options2} />
 
-                <Line data={data} options={options} />
+                }
             </div>
         </>
     )
