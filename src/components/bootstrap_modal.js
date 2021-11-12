@@ -1,5 +1,6 @@
 import { Modal, Button, Row, Col } from "react-bootstrap"
 import { useState, useEffect, useLayoutEffect } from "react";
+import Slider from 'react-rangeslider'
 import axios from "axios"
 // import Zoom from "./zoom"
 import "./slider-style.css"
@@ -15,20 +16,20 @@ function Example({ hideModal, GD, showModal }) {
       setCh(getCh);
 
     }).catch((err) => {
-      console.log(err.response)
+
     })
   }
   
   const handleClose = () => {
-    axios.post("http://localhost:3000/closeclient",{chan:-1}).then((response) => {
-      
+    axios.get("http://localhost:3000/closeclient").then((response) => {
+
       console.log(response)
 
     }).catch((err) => {
       console.log(err)
 
     })
-    hideModal();
+    hideModal(); 
     setShow(false);
 
 
@@ -36,37 +37,32 @@ function Example({ hideModal, GD, showModal }) {
   }
   useEffect(() => {
     handleChannelId();
-    
-    
   }, [GD])
   return (
     <>
-    
-    {
-      ch>0?
-      <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" backdrop="static" keyboard={false} centered show={show} onHide={handleClose}  >
 
-        <Modal.Header closeButton className=" text-white py-1 header-bg">
-          <Modal.Title>Channel ID: {ch}</Modal.Title>
-        </Modal.Header>
+      {
+        ch > 0 ?
+          <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" backdrop="static" keyboard={false} centered show={show} onHide={handleClose}  >
 
-        <Modal.Body className="bg-dark ">
-          <Row>
-            <Col lg={11}>
-              <div id="zoom-graph" >
-                <div className="zoom-col" ><Graph GD={GD} zoom={zoom} /></div></div>
-            </Col><Col lg={1}>  <input type="range" class="form-range" orient="vertical" onChange={(e)=>setZoom(e.target.value)} min="1" max="100" step="5" id="customRange3"></input>
-            </Col>
+            <Modal.Header closeButton className=" text-dark py-1 header-bg bg-light">
+              <Modal.Title>Channel ID: {ch}</Modal.Title>
+            </Modal.Header>
 
-          </Row>
-
-
-
-
-
-        </Modal.Body>
-      </Modal>
-  :<></>}
+            <Modal.Body className="p-0" style={{ backgroundColor: "#062F2E" }}>
+              <Row>
+                <Col lg={11} className="p-2">
+                  <div id="zoom-graph" style={{ backgroundColor: "black", width: "730px", height: "400px", border: "1px solid white" }}>
+                    <Graph GD={GD} zoom={zoom} /></div>
+                </Col><Col lg={1} style={{ padding: "30px" }}>
+                  <input className="pl-3" type="range" value={zoom} class="form-range" orient="vertical" onChange={(e)=>setZoom(e.target.value)} min="1" max="100" step="1" id="customRange3"></input>
+                
+ 
+                </Col>
+              </Row>
+            </Modal.Body>
+          </Modal>
+          : <></>}
     </>
   );
 }
