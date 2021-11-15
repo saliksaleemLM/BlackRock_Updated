@@ -6,6 +6,7 @@ import axios from "axios"
 import "./slider-style.css"
 import Graph from "./graphshow.component"
 function Example({ hideModal, GD, showModal }) {
+// console.log(GD.length)
   const [show, setShow] = useState(showModal);
   const [ch, setCh] = useState(-1);
 
@@ -40,7 +41,7 @@ function Example({ hideModal, GD, showModal }) {
   }, [GD])
   return (
     <>
-
+  
       {
         ch > 0 ?
           <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" backdrop="static" keyboard={false} centered show={show} onHide={handleClose}  >
@@ -54,7 +55,7 @@ function Example({ hideModal, GD, showModal }) {
                   <div id="zoom-graph" style={{ backgroundColor: "black", width: "730px", height: "400px", border: "1px solid white" }}>
                     <Graph GD={GD} zoom={zoom} /></div>
                 </Col><Col lg={1} style={{ padding: "30px" }}>
-                  <input className="pl-3" type="range" value={zoom} class="form-range" orient="vertical" onChange={(e)=>setZoom(e.target.value)} min={-250} max={250} step={50} id="customRange3"></input>
+                  <input className="pl-3" type="range" value={zoom} class="form-range" orient="vertical" onChange={(e)=>setZoom(e.target.value)} min={-251} max={251} step={25} id="customRange3"></input>
                 
  
                 </Col>

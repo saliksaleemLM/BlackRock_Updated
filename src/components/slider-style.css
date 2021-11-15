@@ -19,7 +19,9 @@ input[type=range][orient=vertical]
 
 
 }
-
+.close{
+  color:black !important;
+}
 input[type='range'],
 input[type='range']::-webkit-slider-runnable-track,
 input[type='range']::-webkit-slider-thumb {

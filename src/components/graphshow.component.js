@@ -9,8 +9,12 @@ const Graph = ({ GD, zoom }) => {
 
 
     useEffect(() => {
-        condition()
 
+        condition()
+        // return()=>{
+            
+        //     GD=[]
+        // }
     }, [GD])
 
 
@@ -77,6 +81,7 @@ const Graph = ({ GD, zoom }) => {
                         label: "1",
                         fill: false,
                         pointRadius: 0,
+                        lineTension:0.5,
                         borderWidth: 1,
                         borderColor: "#BCBCBC",
                         data: GD[0]
@@ -84,6 +89,8 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "2",
                         fill: false,
+                        
+                        lineTension:0.5,
                         borderWidth: 1,
                         borderColor: "#BCBCBC",
                         pointRadius: 0,
@@ -94,6 +101,8 @@ const Graph = ({ GD, zoom }) => {
                         fill: false,
                         borderColor: "#BCBCBC",
                         borderWidth: 1,
+                        
+                        lineTension:0.5,
                         pointRadius: 0,
 
 
@@ -103,11 +112,15 @@ const Graph = ({ GD, zoom }) => {
                         fill: false,
                         borderColor: "#BCBCBC",
                         borderWidth: 1,
+                        
+                        lineTension:0.5,
                         pointRadius: 0,
                         data: GD[3]
                     }, {
                         label: "5",
                         fill: false,
+                        
+                        lineTension:0.5,
                         borderColor: "#BCBCBC",
                         borderWidth: 1,
                         pointRadius: 0,
@@ -115,6 +128,8 @@ const Graph = ({ GD, zoom }) => {
                     }, {
                         label: "6",
                         fill: false,
+                        
+                        lineTension:0.5,
                         borderColor: "#BCBCBC",
                         borderWidth: 1,
                         pointRadius: 0,
@@ -124,6 +139,8 @@ const Graph = ({ GD, zoom }) => {
                         fill: false,
                         borderColor: "#BCBCBC",
                         borderWidth: 1,
+                        
+                        lineTension:0.5,
                         pointRadius: 0,
                         data: GD[6]
                     }, {
@@ -131,6 +148,8 @@ const Graph = ({ GD, zoom }) => {
                         fill: false,
                         borderColor: "#BCBCBC",
                         borderWidth: 1,
+                        
+                        lineTension:0.5,
                         pointRadius: 0,
                         data: GD[7]
                     }, {
@@ -138,6 +157,8 @@ const Graph = ({ GD, zoom }) => {
                         fill: false,
                         borderColor: "#BCBCBC",
                         borderWidth: 1,
+                        
+                        lineTension:0.5,
                         pointRadius: 0,
                         data: GD[8]
                     }, {
@@ -145,6 +166,8 @@ const Graph = ({ GD, zoom }) => {
                         fill: false,
                         borderColor: "#BCBCBC",
                         borderWidth: 1,
+                        
+                        lineTension:0.5,
                         pointRadius: 0,
                         data: GD[9]
                     }, {
@@ -152,11 +175,15 @@ const Graph = ({ GD, zoom }) => {
                         fill: false,
                         borderColor: "#BCBCBC",
                         borderWidth: 1,
+                        
+                        lineTension:0.5,
                         pointRadius: 0,
                         data: GD[10]
                     }, {
                         label: "12",
                         fill: false,
+                        
+                        lineTension:0.5,
                         borderColor: "#BCBCBC",
                         borderWidth: 1,
                         pointRadius: 0,
@@ -166,6 +193,8 @@ const Graph = ({ GD, zoom }) => {
                         fill: false,
                         borderColor: "#BCBCBC",
                         borderWidth: 1,
+                        
+                        lineTension:0.5,
                         pointRadius: 0,
                         data: GD[12]
                     }, {
@@ -173,11 +202,15 @@ const Graph = ({ GD, zoom }) => {
                         fill: false,
                         borderColor: "#BCBCBC",
                         borderWidth: 1,
+                        
+                        lineTension:0.5,
                         pointRadius: 0,
                         data: GD[13]
                     }, {
                         label: "15",
                         fill: false,
+                        
+                        lineTension:0.5,
                         borderColor: "#BCBCBC",
                         borderWidth: 1,
                         pointRadius: 0,
@@ -185,114 +218,145 @@ const Graph = ({ GD, zoom }) => {
                     }, {
                         label: "16",
                         fill: false,
-                        borderColor: "#BCBCBC", borderWidth: 1,
+                        
+                        lineTension:0.5,
+                        borderColor: "#BCBCBC", borderWidth: 0,
                         pointRadius: 0,
                         data: GD[15]
                     }, {
                         label: "17",
                         fill: false,
-                        borderColor: "#BCBCBC", borderWidth: 1,
+                        
+                        lineTension:0.5,
+                        borderColor: "#BCBCBC", borderWidth: 0,
                         pointRadius: 0,
                         data: GD[16]
                     }, {
                         label: "18",
                         fill: false,
-                        borderColor: "#BCBCBC", borderWidth: 1,
+                        
+                        lineTension:0.5,
+                        borderColor: "#BCBCBC", borderWidth: 0,
                         pointRadius: 0,
                         data: GD[17]
                     }, {
                         label: "19",
                         fill: false,
-                        borderColor: "#BCBCBC", borderWidth: 1,
+                        
+                        lineTension:0.5,
+                        borderColor: "#BCBCBC", borderWidth: 0,
                         pointRadius: 0,
                         data: GD[18]
                     }, {
                         label: "20",
                         fill: false,
-                        borderColor: "#BCBCBC", borderWidth: 1,
+                        
+                        lineTension:0.5,
+                        borderColor: "#BCBCBC", borderWidth: 0,
                         pointRadius: 0,
                         data: GD[19]
                     }, {
                         label: "21",
                         fill: false,
+                        
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[20]
                     }, {
                         label: "22",
                         fill: false,
+                        
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[21]
                     }, {
                         label: "23",
                         fill: false,
+                        
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[22]
                     }, {
                         label: "24",
                         fill: false,
+                        
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[23]
                     }, {
                         label: "25",
                         fill: false,
+                        
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[24]
                     }, {
                         label: "26",
                         fill: false,
+                        
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[25]
                     }, {
                         label: "27",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[26]
                     }, {
                         label: "28",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[27]
                     }, {
                         label: "29",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
+                        lineTension:0.5,
                         data: GD[28]
                     }, {
                         label: "30",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[29]
                     }, {
                         label: "31",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[30]
                     }, {
                         label: "32",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[31]
                     }, {
                         label: "33",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[32]
                     }, {
                         label: "34",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[33]
@@ -300,6 +364,7 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "35",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[34]
@@ -308,6 +373,7 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "36",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[35]
@@ -315,6 +381,7 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "37",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[36]
@@ -322,6 +389,7 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "38",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[37]
@@ -329,6 +397,7 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "39",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[38]
@@ -336,6 +405,7 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "40",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[39]
@@ -343,6 +413,7 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "41",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[40]
@@ -350,6 +421,7 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "42",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[41]
@@ -357,6 +429,7 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "43",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[42]
@@ -364,6 +437,7 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "44",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[43]
@@ -371,6 +445,7 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "45",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[44]
@@ -378,6 +453,7 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "46",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[45]
@@ -385,6 +461,7 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "47",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[46]
@@ -392,6 +469,7 @@ const Graph = ({ GD, zoom }) => {
                     {
                         label: "48",
                         fill: false,
+                        lineTension:0.5,
                         borderColor: "#BCBCBC", borderWidth: 1,
                         pointRadius: 0,
                         data: GD[47]
@@ -422,6 +500,7 @@ const Graph = ({ GD, zoom }) => {
                         {
                             label: "45",
                             fill: false,
+                            lineTension:0.5,
                             borderColor: "#BCBCBC",
                             pointRadius: 0,
 
@@ -430,6 +509,7 @@ const Graph = ({ GD, zoom }) => {
                         {
                             label: "46",
                             fill: false,
+                            lineTension:0.5,
                             borderColor: "#BCBCBC",
                             pointRadius: 0,
 
@@ -438,6 +518,7 @@ const Graph = ({ GD, zoom }) => {
                         {
                             label: "47",
                             fill: false,
+                            lineTension:0.5,
                             borderColor: "#BCBCBC",
                             pointRadius: 0,
                             data: [1, 2, 5, 32, 23, 99, 984, 689, 546, 786, 234, 57, 78, 768, 465, 3, 5, 476, 68, 5, 6745, 645, 64, 76, 8, 74, 56, 4564, 57, 867, 8, 456, 456, 436, 7]
@@ -445,6 +526,7 @@ const Graph = ({ GD, zoom }) => {
                         {
                             label: "48",
                             fill: false,
+                            lineTension:0.5,
                             borderColor: "#BCBCBC",
                             pointRadius: 0,
                             data: [1, 2, 5, 32, 23, 45, 234, 65, 234, 234, 5646, 57, 78, 78, 465, 3, 5, 476, 68, 5, 6745, 645, 64, 76, 8, 74, 56, 4564, 57, 867, 8, 456, 456, 5876, 7],
@@ -452,6 +534,7 @@ const Graph = ({ GD, zoom }) => {
                         {
                             label: "49",
                             fill: false,
+                            lineTension:0.5,
 
                             borderColor: "red",
 
@@ -464,23 +547,31 @@ const Graph = ({ GD, zoom }) => {
         }
     }
     const options = {
+        bezierCurve: false,
         scales: {
             xAxes: {
-                display: true,
+                display: false,
                 min: -10,
                 max: 48,
-
+                grid: {
+                    drawBorder: true,
+                    color: "#3a3838",
+                    display:true,
+                    }
+                
             },
             yAxes: {
 
-                display: true,
-                max: (zoom/2),
-                min: -(zoom/2),
+                display: false,
+                max: ((1/zoom)*20000),
+                min: -((1/zoom)*20000),
 
                 grid: {
                     drawBorder: true,
                     color: "#3a3838",
+                    display:true,
                 }
+
 
 
                 // stacked: true,
@@ -516,21 +607,28 @@ const Graph = ({ GD, zoom }) => {
         }
     }
     const options2 = {
+     
         scales: {
             xAxes: {
-                display: true,
+                display: false,
                 min: 1,
                 max: 48,
+                grid: {
+                    drawBorder: true,
+                    display:true,
+                    color: "#3a3838",
+                }
 
             },
             yAxes: {
 
-                display: true,
+                display: false,
                 max: zoom * 10,
                 min: -(zoom * 10),
 
                 grid: {
                     drawBorder: true,
+                    display:true,
                     color: "#3a3838",
                 }
 
@@ -569,13 +667,14 @@ const Graph = ({ GD, zoom }) => {
     }
     return (
         <>
+       
             <div className="App-main">
-                {
-                    console.log(zoom),
-                    zoom > 50 ?
+           
+            { <div style={{color:"white"}}>{zoom}</div> }
+                {   
+                    zoom >0 ?
                         <Line data={data} options={options} />
                         : <Line data={data} options={options2} />
-
                 }
             </div>
         </>
