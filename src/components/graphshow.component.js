@@ -564,8 +564,8 @@ const Graph = ({ GD, zoom }) => {
             yAxes: {
 
                 display: true,
-                max: ((1 / zoom) * 20000),
-                min: -((1 / zoom) * 20000),
+                max: ((1 / zoom) * 5000),
+                min: -((1 / zoom) * 5000),
 
                 grid: {
                     drawBorder: true,
