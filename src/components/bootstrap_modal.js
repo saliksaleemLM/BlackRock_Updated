@@ -5,7 +5,7 @@ import axios from "axios"
 
 import "./slider-style.css"
 import Graph from "./graphshow.component"
-function Example({ hideModal, GD, showModal }) {
+function Example({handleGD, hideModal, GD, showModal }) {
   // console.log(GD.length)
   const [show, setShow] = useState(showModal);
   const [ch, setCh] = useState(-1);
@@ -23,27 +23,28 @@ function Example({ hideModal, GD, showModal }) {
 
   const handleClose = () => {
     axios.get("http://192.168.70.8:3000/closeclient").then((response) => {
-
+      hideModal();
+      setShow(false);
       console.log(response)
+      
 
     }).catch((err) => {
       console.log(err)
 
     })
-    hideModal();
-    setShow(false);
+    
 
 
 
   }
   useEffect(() => {
     handleChannelId();
+    // return(()=>{});
   }, [GD])
   return (
     <>
-      {
-        ch > 0 ?
-          <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" backdrop="static" keyboard={false} centered show={show} onHide={handleClose}  >
+{
+ch>0?          <Modal size="lg" aria-labelledby="contained-modal-title-vcenter" backdrop="static" keyboard={false} centered show={show} onHide={handleClose}  >
             <Modal.Header closeButton className=" text-dark py-1 header-bg bg-light">
               <Modal.Title>Channel ID: {ch}</Modal.Title>
             </Modal.Header>
@@ -58,21 +59,25 @@ function Example({ hideModal, GD, showModal }) {
 
 
 
+                <Col lg={1}><div class="slidecontainer">
+                  <input type="range" min={-251} max={251} value={zoom} onChange={(e) => setZoom(e.target.value)} step={25} class="slider" id="myRange" />
+
+                </div></Col>
+              </Row>
+            </Modal.Body>
+          </Modal>
+:<></>}      
+    </>
+  );
+}
+export default Example;
+
+
+
+{/* 
                 <Col lg={1} style={{ padding: "30px" }}>
                   <input className="pl-3" type="range" value={zoom} class="form-range" orient="vertical" onChange={(e)=>setZoom(e.target.value)} min={-251} max={251} step={25} id="customRange3"></input>
 
 
 
-                </Col>
-                {/* <Col lg={12}><div class="slidecontainer">
-                  <input type="range" min="1" max="100" value={zoom} onChange={(e) => setZoom(e.target.value)} class="slider" id="myRange" />
-
-                </div></Col> */}
-              </Row>
-            </Modal.Body>
-          </Modal>
-          : <></>}
-    </>
-  );
-}
-export default Example;
+                </Col> */}

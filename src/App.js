@@ -1,16 +1,8 @@
-
 import { useState, useEffect } from 'react';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-
 import Example from "./components/bootstrap_modal"
-
 import { io } from "socket.io-client"
 import './App.css';
-// import { useLocalStorage } from "react-use-storage";
-
-
 const demos = {
   htmlPage:
     '<iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="http://192.168.70.8/BRwEB/Data.html"></iframe>'
@@ -18,7 +10,7 @@ const demos = {
 };
 const socket = io.connect("http://192.168.70.8:4000")
 function App() {
-  const [showModal, setShowModal] = useState(true)
+  const [showModal, setShowModal] = useState(false)
 
   const [count, setCount] = useState(0)
 
@@ -32,7 +24,7 @@ function App() {
 
       var index = array.indexOf(len);
       array.splice(index, 1);
-      console.log(array);
+      
       setGD(array);
 
 
@@ -47,18 +39,27 @@ function App() {
       console.log("connected Successfully");
     });
 
+
     socket.on('wave', (data1) => {
 
       setErr(true)
       //i  want to run this part only one time so i used count here
       if (count < 1) {
         setCount(1)
-
         setShowModal(true);
       }
-      dataGather(data1);
+     if(showModal==true) {
+        dataGather(data1);
+     }
+
     })
+
+
+
   }, []);
+  const handleGD=()=>{
+setGD([]);
+  }
   const hideModal = async () => {
     // socket.disconnect();
     await setGD([])
@@ -71,18 +72,15 @@ function App() {
 
   return (
     <div className="App">
-
       <Iframe iframe={demos["htmlPage"]} allow="autoplay" className="ifr1" sandbox="allow-scripts" />
-
-
-
-      {showModal == true ? <Example hideModal={hideModal} GD={GD} showModal={showModal} /> : <></>}
+      {showModal == true ? <Example hideModal={hideModal} handleGD={handleGD}  GD={GD} showModal={showModal} /> : <></>}
 
 
     </div>
 
   );
 }
+//using iframe to show html page.
 function Iframe(props) {
   return (
     <div className="ifram"

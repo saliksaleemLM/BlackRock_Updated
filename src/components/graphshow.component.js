@@ -674,7 +674,7 @@ const Graph = ({ GD, zoom }) => {
 
                 {/* {<div style={{ color: "white" }}>{zoom}</div>} */}
                 {
-                    zoom > -2 ?
+                    zoom >= -2 ?
                         <Line data={data} options={options} />
                         : <Line data={data} options={options2} />
                 }
