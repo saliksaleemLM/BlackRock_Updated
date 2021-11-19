@@ -16,21 +16,20 @@ function App() {
 
   const [GD, setGD] = useState([])
   const [err, setErr] = useState(false)
-  const dataGather = (data1) => {
-    var len = GD.length;
+  const dataGather =async (data1) => {
+    // var len = GD.length;
+    // var array =[...GD];
+    // if (array.length > 50) {
+    //  // make a separate copy of the array
 
-    if (len > 50) {
-      var array = GD; // make a separate copy of the array
-
-      var index = array.indexOf(len);
-      array.splice(index, 1);
-      
-      setGD(array);
+    //   var index = array.indexOf(len);
+    //   array.splice(index, 1);
+    //   setGD(array); 
 
 
-    } else {
-      setGD(GD => [data1, ...GD])
-    }
+    // } else {
+     setGD(GD => [data1, ...GD])
+    // }
 
   }
 
@@ -39,7 +38,7 @@ function App() {
       console.log("connected Successfully");
     });
 
-
+  
     socket.on('wave', (data1) => {
 
       setErr(true)
@@ -48,32 +47,31 @@ function App() {
         setCount(1)
         setShowModal(true);
       }
-     if(showModal==true) {
+    
         dataGather(data1);
-     }
+     
 
     })
 
 
 
   }, []);
-  const handleGD=()=>{
-setGD([]);
-  }
+//   const handleGD=()=>{
+// setGD([]);
+//   }
   const hideModal = async () => {
     // socket.disconnect();
-    await setGD([])
-    await setCount(0);
-    await setShowModal(false)
-    // console.log(showModal)
-
-
+     await setShowModal(false)
+     await setGD([])
+     await setCount(0);
+  
   }
 
   return (
     <div className="App">
       <Iframe iframe={demos["htmlPage"]} allow="autoplay" className="ifr1" sandbox="allow-scripts" />
-      {showModal == true ? <Example hideModal={hideModal} handleGD={handleGD}  GD={GD} showModal={showModal} /> : <></>}
+
+      {showModal == true ? <Example hideModal={hideModal} GD={GD} showModal={showModal} /> : <></>}
 
 
     </div>

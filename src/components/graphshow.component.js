@@ -8,19 +8,17 @@ const Graph = ({ GD, zoom }) => {
     const [data, setData] = useState({})
 
 
+
     useEffect(() => {
 
-        condition()
-        // return()=>{
-
-        //     GD=[]
-        // }
+        condition();
     }, [GD])
 
 
     const condition = () => {
+        // Line.update("none");
+        if (GD.length > 0) {
 
-        if (GD.length > 1) {
 
             setData({
                 labels: [
@@ -71,7 +69,7 @@ const Graph = ({ GD, zoom }) => {
                     "45",
                     "46",
                     "47",
-                    "48"
+                    "48", "49", "50", "51", "52", "53", "54"
 
                 ],
                 //backgroundColor: ['rgba(255,0,0,1)'],
@@ -480,10 +478,11 @@ const Graph = ({ GD, zoom }) => {
 
                         borderColor: "red", borderWidth: 1,
                         pointRadius: -1,
-                        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                        data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
                     },
 
                 ]
+
             });
 
         } else {
@@ -545,32 +544,39 @@ const Graph = ({ GD, zoom }) => {
                 });
             }
         }
+
     }
     const options = {
-       
+        animation: {
+            duration: 0
+        },
         scales: {
             xAxes: {
                 display: true,
                 min: -10,
-                max: 48,
-                grid: {
-                    drawBorder: true,
-                    color: "#3a3838",
-                    display: true,
-                },ticks: {
-                    stepSize: 5
+                max: 53,
+                // grid: {
+                //     drawBorder: true,
+                //     color: "#3a3838",
+                //     display: true,
+                // },
+                ticks: {
+                    display: false,
                 },
             },
             yAxes: {
 
                 display: true,
-                max: ((1 / zoom) * 5000),
-                min: -((1 / zoom) * 5000),
+                max: ((1 / zoom) * 15000),
+                min: -((1 / zoom) * 15000),
 
-                grid: {
-                    drawBorder: true,
-                    color: "#3a3838",
-                    display: true,
+                // grid: {
+                //     drawBorder: true,
+                //     color: "#3a3838",
+                //     display: true,
+                // },
+                ticks: {
+                    display: false,
                 }
 
 
@@ -608,34 +614,95 @@ const Graph = ({ GD, zoom }) => {
         }
     }
     const options2 = {
-        
+        animation: {
+            duration: 0
+        },
         scales: {
             xAxes: {
                 display: true,
-                min: 1,
-                max: 48,
-                grid: {
-                    drawBorder: true,
-                    display: true,
-                    color: "#3a3838",
-                },
+                min: -10,
+                max: 52,
+                // grid: {
+                //     drawBorder: true,
+                //     display: true,
+                //     color: "#3a3838",
+                // },
                 ticks: {
-                    stepSize: 4
+                    stepSize: 4,
+                    display: false,
                 },
             },
             yAxes: {
 
                 display: true,
-                max: zoom * 10,
-                min: -(zoom * 10),
+                max: zoom * 30,
+                min: -(zoom * 30),
 
-                grid: {
-                    drawBorder: true,
-                    display: true,
-                    color: "#3a3838",
+                // grid: {
+                //     drawBorder: true,
+                //     display: true,
+                //     color: "#3a3838",
+                // },
+                ticks: {
+                    display: false,
                 }
 
                 // stacked: true,
+            },
+        },
+
+        plugins: {
+
+            legend: {
+                display: false,
+            },
+            tooltips: {
+                enabled: false,
+            },
+            zoom: {
+
+                pan: {
+                    enabled: true,
+                    mode: "xy",
+                    speed: 1
+                },
+                zoom: {
+                    wheel: {
+                        enabled: true,
+                    },
+                    mode: "xy",
+                },
+            }
+        }
+    }
+    const options3 = {
+        animation: {
+            duration: 0
+        },
+        scales: {
+            xAxes: {
+                display: true,
+                min: -10,
+                max: 52,
+                // grid: {
+                //     drawBorder: true,
+                //     display: true,
+                //     color: "#3a3838",
+                // },
+                ticks: {
+                    display: false,
+                },
+            },
+            yAxes: {
+
+                display: true,
+                suggestedMax: 700,
+                suggestedMin: -700,
+                ticks: {
+                    display: false,
+                }
+
+
             },
         },
 
@@ -667,16 +734,21 @@ const Graph = ({ GD, zoom }) => {
             }
         }
     }
+    // Chart.prototype.update();
+
     return (
         <>
 
             <div className="App-main">
-
-                {/* {<div style={{ color: "white" }}>{zoom}</div>} */}
+                {<div style={{ color: "white" }}>{zoom}</div>}
                 {
-                    zoom >= -2 ?
+
+                    zoom > 0 ?
                         <Line data={data} options={options} />
-                        : <Line data={data} options={options2} />
+                        :
+                        (zoom == -1) || (zoom == -26) ? <Line data={data} options={options3} />
+                            :
+                            <Line data={data} options={options2} />
                 }
             </div>
         </>
