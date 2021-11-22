@@ -1,159 +1,84 @@
-
 import { useState, useEffect } from 'react';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Example from "./components/bootstrap_modal"
-
-import axios from "axios"
 import { io } from "socket.io-client"
 import './App.css';
-// import { useLocalStorage } from "react-use-storage";
-
-const socket = io.connect("http://localhost:4000")
-
-
-
 const demos = {
   htmlPage:
-    '<iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="http://192.168.70.13/BlackRock/data.html"></iframe>'
+    '<iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="http://192.168.70.8/BRwEB/Data.html"></iframe>'
 
 };
+const socket = io.connect("http://192.168.70.8:4000")
 function App() {
-  const [showModal, setShowModal] = useState(true)
+  const [showModal, setShowModal] = useState(false)
 
-
-  const [ch, setCh] = useState(2);
+  const [count, setCount] = useState(0)
 
   const [GD, setGD] = useState([])
-  const dataGather = (data1) => {
+  const [err, setErr] = useState(false)
+  const dataGather =async (data1) => {
+    // var len = GD.length;
+    // var array =[...GD];
+    // if (array.length > 50) {
+    //  // make a separate copy of the array
 
-    setGD(GD => [data1, ...GD]);
+    //   var index = array.indexOf(len);
+    //   array.splice(index, 1);
+    //   setGD(array); 
 
+
+    // } else {
+     setGD(GD => [data1, ...GD])
+    // }
 
   }
 
-  const handleClick = () => {
-    console.log("hello g" + ch)
-    axios.post('http://localhost:3000/getchanneldata', { val: ch }).then((res) => {
-
-      console.log(res)
-      console.log("handle CLick called again")
-
-    }).catch((err) => {
-      console.log(err)
+  useEffect(() => {
+    socket.on("connect", () => {
+      console.log("connected Successfully");
     });
 
-  }
-  useEffect(() => {
+  
+    socket.on('wave', (data1) => {
 
-
-    // window.addEventListener("message", handleMessage, false);
-
-    // function handleMessage(e) {
-    //   let { key, value, method } = e.data;
-    //   if (method == 'store') {
-    //     window.localStorage.setItem(key, value); // Store data in iframe domain local storage
-    //   } else if (method == 'retrieve') {
-    //     let response = window.localStorage.getItem(key);
-    //     e.source.postMessage({
-    //       key,
-    //       response,
-    //       method: 'response'
-    //     }, '*'); // Retrieve local storage data
-    //   }
-    // }
-    // -------------------------------------------------------------------- 
-    // --------------Dont delete this below portion ----------------------
-    // --------------------------------------------------------------------
-
-
-
-    // window.addEventListener('storage', (event) => {
-    //   // When local storage changes, dump the list to
-    //   // the console.
-    //   console.log(event.origin)
-    //   //   console.log(JSON.parse(window.localStorage.getItem('chan')));
-    //   var data = window.sessionStorage.getItem('chan');
-    //   // console.log(data)
-
-    //   setCh(data)
-
-    // });
-    // console.log(localStorage.key(0))
-    //var PERMITTED_DOMAIN = "http://127.0.0.1:5501/my-app/Data.html";
-    /**
-     * Receiving message from other domain
-     */
-    // window.addEventListener('message', function (event) {
-    //   if (event.origin === PERMITTED_DOMAIN) {
-    //     if (event.data) {
-    //       localStorage.setItem("localstorage", event.data);
-    //     } else {
-    //       localStorage.removeItem("localstorage");
-    //     }
-    //   }
-    // });
-
-
-
-
-    // if (ch > 1) {
-
-    //   setShowModal(true);
-
-
-
-    //   //   console.log("channel1")
-    //   socket.on('wave', (data1) => {
-
-
-    //     dataGather(data1);
-
-    //   })
-    //   //   console.log("hele")
-    //   handleClick()
-
-    // }
-
-
-
-
-  }, [ch]);
-
-
-  const hideModal = () => {
-
-    sessionStorage.setItem('chan', -1);
-    setShowModal(false)
-
-
-    setGD([])
-
-    axios.get("http://localhost:3000/closeclient").then((response) => {
-      console.log(response)
-
-      setGD([])
-
-
-    }).catch((err) => {
-      console.log(err)
+      setErr(true)
+      //i  want to run this part only one time so i used count here
+      if (count < 1) {
+        setCount(1)
+        setShowModal(true);
+      }
+    
+        dataGather(data1);
+     
 
     })
 
+
+
+  }, []);
+//   const handleGD=()=>{
+// setGD([]);
+//   }
+  const hideModal = async () => {
+    // socket.disconnect();
+     await setShowModal(false)
+     await setGD([])
+     await setCount(0);
+  
   }
 
   return (
     <div className="App">
-     
-        <Iframe iframe={demos["htmlPage"]} allow="autoplay" id="ifr" />
-        {/* <div className="div1"></div> */}
-     
+      <Iframe iframe={demos["htmlPage"]} allow="autoplay" className="ifr1" sandbox="allow-scripts" />
 
-      {showModal === true ? <Example className="i am here" showModal={showModal} hideModal={hideModal} ch={ch} GD={GD} /> : <></>}
+      {showModal == true ? <Example hideModal={hideModal} GD={GD} showModal={showModal} /> : <></>}
+
+
     </div>
+
   );
 }
+//using iframe to show html page.
 function Iframe(props) {
   return (
     <div className="ifram"
