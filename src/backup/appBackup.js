@@ -1,97 +1,84 @@
-
 import { useState, useEffect } from 'react';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import Example from "./components/bootstrap_modal"
-
-import axios from "axios"
 import { io } from "socket.io-client"
 import './App.css';
-// import { useLocalStorage } from "react-use-storage";
-
-const socket = io.connect("http://localhost:4000")
-
 const demos = {
   htmlPage:
-    '<iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="http://localhost/BRwEB/Data.html"></iframe>'
+    '<iframe width="100%" height="100%" scrolling="no" frameborder="no" allow="autoplay" src="http://192.168.70.8/BRwEB/Data.html"></iframe>'
 
 };
+const socket = io.connect("http://192.168.70.8:4000")
 function App() {
   const [showModal, setShowModal] = useState(false)
-  const [ch, setCh] = useState(-1);
-  const[count,setCount]=useState(0)
-  const [zoom,setZoom]=useState(1);
+
+  const [count, setCount] = useState(0)
+
   const [GD, setGD] = useState([])
-  const dataGather = (data1) => {
-    setGD(GD => [data1, ...GD])
+  const [err, setErr] = useState(false)
+  const dataGather =async (data1) => {
+    // var len = GD.length;
+    // var array =[...GD];
+    // if (array.length > 50) {
+    //  // make a separate copy of the array
+
+    //   var index = array.indexOf(len);
+    //   array.splice(index, 1);
+    //   setGD(array); 
 
 
-
+    // } else {
+     setGD(GD => [data1, ...GD])
+    // }
 
   }
-  const handleChannelId = () => {
-    axios.get("http://localhost:3000/getChannelId").then((res) => {
-      const getCh = res.data.chan
-      setCh(getCh);
-    }).catch((err) => {
-      console.log(err.response)
-    })
-  }
+
   useEffect(() => {
+    socket.on("connect", () => {
+      console.log("connected Successfully");
+    });
 
-
-
+  
     socket.on('wave', (data1) => {
 
-      // console.log("count"+count);
-      if (count<1) {
+      setErr(true)
+      //i  want to run this part only one time so i used count here
+      if (count < 1) {
+        setCount(1)
         setShowModal(true);
-        setCount(count+1);
-        handleChannelId()
-
       }
-
-
-      dataGather(data1*zoom);
-    })
-
-  }, [count]);
-  const handleZoom=()=>{
-
-
-  }
-
-
-
-  const hideModal = () => {
-    // console.log("hello g")
-    setCount(0)
-
-    axios.get("http://localhost:3000/closeclient").then((response) => {
-      console.log(response)
-      setShowModal(false)
     
-      setGD([])
-
-    }).catch((err) => {
-      console.log(err)
+        dataGather(data1);
+     
 
     })
 
+
+
+  }, []);
+//   const handleGD=()=>{
+// setGD([]);
+//   }
+  const hideModal = async () => {
+    // socket.disconnect();
+     await setShowModal(false)
+     await setGD([])
+     await setCount(0);
+  
   }
 
   return (
     <div className="App">
+      <Iframe iframe={demos["htmlPage"]} allow="autoplay" className="ifr1" sandbox="allow-scripts" />
 
-      <Iframe iframe={demos["htmlPage"]} allow="autoplay" className="ifr1" sandbox="allow-scripts" onChange={() => { console.log("changing") }} />
+      {showModal == true ? <Example hideModal={hideModal} GD={GD} showModal={showModal} /> : <></>}
 
 
-
-      {showModal == true ? <Example showModal={showModal} hideModal={hideModal} GD={GD} ch={ch} /> : <></>}
     </div>
+
   );
 }
+//using iframe to show html page.
 function Iframe(props) {
   return (
     <div className="ifram"

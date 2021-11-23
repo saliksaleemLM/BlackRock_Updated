@@ -548,7 +548,9 @@ const Graph = ({ GD, zoom }) => {
     }
     const options = {
         animation: {
-            duration: 0
+            duration:0,
+            animationEasing: 'linear',
+            animationSteps: 100,
         },
         scales: {
             xAxes: {
@@ -615,7 +617,9 @@ const Graph = ({ GD, zoom }) => {
     }
     const options2 = {
         animation: {
-            duration: 0
+            duration:0,
+            animationEasing: 'linear',
+            animationSteps: 100,
         },
         scales: {
             xAxes: {
@@ -677,7 +681,9 @@ const Graph = ({ GD, zoom }) => {
     }
     const options3 = {
         animation: {
-            duration: 0
+            duration:0,
+            animationEasing: 'linear',
+            animationSteps: 100,
         },
         scales: {
             xAxes: {
@@ -740,7 +746,7 @@ const Graph = ({ GD, zoom }) => {
         <>
 
             <div className="App-main">
-                {<div style={{ color: "white" }}>{zoom}</div>}
+           
                 {
 
                     zoom > 0 ?
